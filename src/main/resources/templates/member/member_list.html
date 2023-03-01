@@ -1,0 +1,15 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home!</title>
+</head>
+<body>
+hi
+<th:block th:each="member : ${list}">
+<div th:text="${member.getIdx()}"></div>
+<div th:text="${member.getId()}"></div>
+<div th:text="${member.getPassword()}"></div>
+<div th:text="${member.getName()}"></div>
+<!--<div th:text="${member.getRegDay()"></div>-->
+</th:block>
+</body>
+</html>
