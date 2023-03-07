@@ -24,4 +24,17 @@ public class Con_member {
         model.addAttribute("list",list);
         return "/member/member_list";
     }
+
+    @GetMapping("/signIn")
+    public String memberSignIn(){
+        return "/member/member_signIn";
+    }
+
+    @GetMapping("/signUp")
+    public String memberSignUp(){
+        System.out.println("sign up입니다.");
+        ser_member.insertNewMember();
+        return "/member/member_signIn";
+    }
+
 }
