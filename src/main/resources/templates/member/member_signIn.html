@@ -93,13 +93,38 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     </form>
 
-    <div class="fastsignup"  style="cursor:pointer;" onclick="location.href='./signUp'">
+    <div class="fastsignup"  style="cursor:pointer;" onclick="signUp();">
         빠른 회원 가입
         <span class="fastsignuptext">테스트용 계정을 자동으로 만들어 줍니다.</span>
     </div>
+    <br>
+    <div th:if = "${newID != null || newPW != null}">
+        ID : <span th:text="${newID}"></span><br>
+        PW : <span th:text="${newPW}"></span>
+    </div>
+<!--    <div th:if = "${loginInfo_list != null}">-->
+<!--        ID : <span th:text="${loginInfo_list[0].id}"></span> <br>-->
+<!--        PW : <span th:text="${loginInfo_list[0].password}"></span>-->
+<!--    </div>-->
+
+
 
 </main>
 
+<script th:inline="javascript">
+/*<![CDATA[*/
+    function signUp(){
+        let id = [[${newID}]];
+        let pw = [[${newPW}]];
+        if(id == null && pw == null){
+            location.href='./signUp'
+        }
+        else{
+            alert('이미 생성된 계정이 있습니다  id : '+id+' / pw : '+pw);
+        }
+    }
+/*]]>*/
+</script>
 
 
 </body>

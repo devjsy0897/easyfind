@@ -31,9 +31,13 @@ public class Con_member {
     }
 
     @GetMapping("/signUp")
-    public String memberSignUp(){
+    public String memberSignUp(Model model){
         System.out.println("sign up입니다.");
-        ser_member.insertNewMember();
+        List<En_member> list = ser_member.insertNewMember();
+
+        model.addAttribute("newID",list.get(0).getId());
+        model.addAttribute("newPW",list.get(0).getPassword());
+
         return "/member/member_signIn";
     }
 

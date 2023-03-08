@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class Ser_member {
         return list;
     }
 
-    public void insertNewMember() {
+    public List<En_member> insertNewMember() {
         En_member en_member = new En_member();
         List<En_member> list = re_member.findAll(Sort.by(Sort.Direction.DESC, "idx"));
         int idx = 1;
@@ -33,7 +34,7 @@ public class Ser_member {
         }
 
         String pw = "password";
-        for(int i=0;i<5;i++) {
+        for(int i=0;i<4;i++) {
             pw += ((int)((Math.random() * 10000) % 10))+"";
         }
 
@@ -44,5 +45,8 @@ public class Ser_member {
 
         re_member.save(en_member);
 
+        list = re_member.findAll(Sort.by(Sort.Direction.DESC, "idx"));
+
+        return list;
     }
 }
