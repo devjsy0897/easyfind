@@ -5,6 +5,7 @@ import com.devjsy.easyfind.repository.Re_member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,13 @@ public class Ser_member {
 
     public List<En_member> selectAll(){
         List<En_member> list = re_member.findAll();
-        System.out.println("------------ service 에서 id list ------------");
-        for(En_member l : list){
-            System.out.println(l);
-        }
         return list;
+    }
+
+    public void signIn(Model model){
+        String id = (String) model.getAttribute("ID");
+        String pw = (String) model.getAttribute("password");
+        System.out.println("signIn에서 ID : "+id+" / pw:"+pw);
     }
 
     public List<En_member> insertNewMember() {

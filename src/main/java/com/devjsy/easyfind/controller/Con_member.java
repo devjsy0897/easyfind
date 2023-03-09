@@ -25,10 +25,20 @@ public class Con_member {
         return "/member/member_list";
     }
 
-    @GetMapping("/signIn")
-    public String memberSignIn(){
+    @GetMapping("/signInView")
+    public String memberSignInView(){
         return "/member/member_signIn";
     }
+
+    @PostMapping("/signIn")
+    public String signIn(Model model){
+
+        ser_member.signIn(model);
+
+        return "redirect:/member/list";
+
+    }
+
 
     @GetMapping("/signUp")
     public String memberSignUp(Model model){

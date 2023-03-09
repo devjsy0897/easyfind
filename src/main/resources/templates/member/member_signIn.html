@@ -75,17 +75,18 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form>
+
+    <form action="signIn" method="post">
 
         <!--<img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
         <h1 style="font-weight:900; color:#4378FF;" >EASY FIND</h1>
 
         <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="ID">
+            <input type="text" class="form-control" id="floatingInput" placeholder="ID" name="ID">
             <label for="floatingInput">ID</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
             <label for="floatingPassword">Password</label>
         </div>
 
@@ -102,10 +103,7 @@
         ID : <span th:text="${newID}"></span><br>
         PW : <span th:text="${newPW}"></span>
     </div>
-<!--    <div th:if = "${loginInfo_list != null}">-->
-<!--        ID : <span th:text="${loginInfo_list[0].id}"></span> <br>-->
-<!--        PW : <span th:text="${loginInfo_list[0].password}"></span>-->
-<!--    </div>-->
+
 
 
 
