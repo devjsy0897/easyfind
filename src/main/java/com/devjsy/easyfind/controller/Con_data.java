@@ -15,12 +15,16 @@ public class Con_data {
 
 
     @GetMapping("/list")
-    public String doMemberList(Model model) throws Exception{
+    public String dataList(Model model) throws Exception{
         System.out.println("data/list");
 //        List<En_member> list = ser_member.selectAll();
 //        model.addAttribute("list",list);
         return "/data/data_list";
     }
 
+    @GetMapping("/saveBarcode")
+    public String saveBarcode(){
+        return "/data/data_saveBarcode";
+    }
 
 }
