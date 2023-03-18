@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Barcode Reader</title>
+    <style>
+      #video {
+        width: 500px;
+        height: 500px;
+        object-fit: cover;
+        border: 5px solid black;
+      }
+      #result {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+</head>
+<body>
+<video id="video"></video>
+<div id="result"></div>
+
+<script src="https://unpkg.com/@zxing/library@0.18.4"></script>
+<script>
+      const codeReader = new ZXing.BrowserQRCodeReader();
+
+      const video = document.getElementById("video");
+      const resultDiv = document.getElementById("result");
+
+      codeReader
+        .decodeFromVideoDevice(null, "video", (result, error) => {
+          if (result) {
+            resultDiv.innerHTML = result.text;
+          }
+          if (error && !(error instanceof ZXing.NotFoundException)) {
+            console.error(error);
+            resultDiv.innerHTML = error;
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          resultDiv.innerHTML = err;
+        });
+    </script>
+</body>
+</html>
