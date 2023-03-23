@@ -32,8 +32,10 @@ public class Con_data {
         return "/data/data_saveBarcode_quagga";
     }
 
-    @GetMapping("/save")
-    public String save(){
+    @PostMapping("/save")
+    public String save(Model model){
+        String barcodeInfo = (String)model.getAttribute("barcodeInfo");
+        System.out.println("barcodeInfo:"+barcodeInfo);
         return "/data/data_save";
     }
 

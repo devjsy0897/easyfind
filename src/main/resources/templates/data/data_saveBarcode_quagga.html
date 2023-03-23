@@ -29,15 +29,21 @@
 
 <div id="scanner-container">
     <div id="interactive" class="viewport"></div>
-    <canvas class="drawingBuffer"></canvas>
+    <canvas class="drawingBuffer"style="width:0px; height:0px;"></canvas>
     <canvas id="overlay"></canvas>
 </div>
-<div id="result"></div>
-<button>확인</button>
+<div style="margin: 10px auto; width: 450px; z-index:100;">
+    <form action="save" method="Post">
+        <input type="text" name="barcodeInfo" id="result" style="width:350px;" value="" placeholder="바코드 미 인식 시 수동으로 넣으세요"/>
+        <button onclick="save">확인</button>
+    </form>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
-<script>
+<script type="text/javascript">
+
     $(document).ready(function() {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         Quagga.init({
@@ -64,7 +70,9 @@
         });
 
         Quagga.onDetected(function(result) {
-          $('#result').html(result.codeResult.code);
+          document.getElementById('result').value = result.codeResult.code;
+
+
         });
       }
     });
