@@ -27,16 +27,16 @@ public class Con_data {
         return "/data/data_list";
     }
 
-    @GetMapping("/saveBarcode")
+    @GetMapping("/barcode")
     public String saveBarcode(){
-        return "/data/data_saveBarcode_quagga";
+        return "/data/data_barcode_quagga";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/location")
     public String save(Model model){
         String barcodeInfo = (String)model.getAttribute("barcodeInfo");
-        System.out.println("barcodeInfo:"+barcodeInfo);
-        return "/data/data_save";
+        model.addAttribute("barcodeInfo",barcodeInfo);
+        return "/data/data_location";
     }
 
 }
