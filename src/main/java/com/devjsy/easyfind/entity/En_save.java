@@ -21,10 +21,14 @@ public class En_save {
     @Id
     private int idx;
     private String userID;
+
+    @Column(name = "data_name")
     private String dataName;
 
-   /* @Column(name = "reg_day")
-    private String regDay;*/
+    private String location;
+
+    @Column(name = "reg_date")
+    private String regDate;
 
 
 }
