@@ -22,6 +22,7 @@ public class Con_data {
     public String dataList(Model model) throws Exception{
         System.out.println("data/list");
 
+        // 지금은 test 한다고 전체를 가져오는건데 나중에는 id만 get 해서 selectbyId 해서 해당 id에 관한 정보만 빼내야 한다.
         List<En_save> list = ser_data.selectAll();
         model.addAttribute("list", list);
         return "/data/data_list";

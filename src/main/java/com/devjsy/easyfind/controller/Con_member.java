@@ -34,15 +34,17 @@ public class Con_member {
     public String signIn(Model model){
 
         ser_member.signIn(model);
+        // 로그인 로직 개발필요
+        // model에 id 담아서 redirect로 data_list 이동해야함
 
-        return "redirect:/member/list";
+        return "redirect:/data/data_list";
 
     }
 
 
     @GetMapping("/signUp")
     public String memberSignUp(Model model){
-        System.out.println("sign up입니다.");
+
         List<En_member> list = ser_member.insertNewMember();
 
         model.addAttribute("newID",list.get(0).getId());
