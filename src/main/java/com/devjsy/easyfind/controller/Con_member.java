@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -31,10 +32,10 @@ public class Con_member {
     }
 
     @PostMapping("/signIn")
-    public String signIn(Model model){
+    public String signIn(HttpServletRequest request){
 
-        ser_member.signIn(model);
-        // 로그인 로직 개발필요
+        ser_member.signIn(request);
+
         // model에 id 담아서 redirect로 data_list 이동해야함
 
         return "redirect:/data/data_list";

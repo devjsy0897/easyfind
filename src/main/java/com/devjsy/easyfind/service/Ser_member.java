@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +22,13 @@ public class Ser_member {
         return list;
     }
 
-    public void signIn(Model model){
-        String id = (String) model.getAttribute("ID");
-        String pw = (String) model.getAttribute("password");
+    public void signIn(HttpServletRequest request){
+        String id = request.getParameter("id");
+        String pw = request.getParameter("password");
         System.out.println("signIn에서 ID : "+id+" / pw:"+pw);
+
+        // 로그인 로직 개발필요
+
     }
 
     public List<En_member> insertNewMember() {
