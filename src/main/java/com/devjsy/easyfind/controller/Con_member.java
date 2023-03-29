@@ -26,7 +26,7 @@ public class Con_member {
         return "/member/member_list";
     }
 
-    @GetMapping("/signInView")
+    @GetMapping("/signIn")
     public String memberSignInView(){
         return "/member/member_signIn";
     }

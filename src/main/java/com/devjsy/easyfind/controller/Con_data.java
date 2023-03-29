@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -34,8 +35,9 @@ public class Con_data {
     }
 
     @PostMapping("/location")
-    public String save(Model model){
-        String barcodeInfo = (String)model.getAttribute("barcodeInfo");
+    public String save(HttpServletRequest request, Model model){
+        String barcodeInfo = request.getParameter("barcodeInfo");
+        System.out.println("barcodeInfo:"+barcodeInfo);
         model.addAttribute("barcodeInfo",barcodeInfo);
         return "/data/data_location";
     }
