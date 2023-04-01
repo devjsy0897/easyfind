@@ -10,11 +10,14 @@
 
 <section>
     <th:block th:each="save : ${list}">
-        <div th:text="${save.getIdx()}"></div>
-        <div th:text="${save.getUserID()}"></div>
+        <div th:text="${save.getDataNum()}"></div>
         <div th:text="${save.getDataName()}"></div>
-        <div th:text="${save.getRegDate()}"></div>
-        <div th:text="${save.getLocation()}"></div>
+        <div th:text="${save.getUserID()}"></div>
+        <div th:text="${save.getLocation1()}"></div>
+        <div th:text="${save.getLocation2()}"></div>
+        <div th:text="${save.getLocation3()}"></div>
+        <div th:text="${save.getInDate()}"></div>
+        <div th:text="${save.getOutDate()}"></div>
     </th:block>
 </section>
 

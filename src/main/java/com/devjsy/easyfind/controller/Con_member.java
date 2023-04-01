@@ -37,8 +37,8 @@ public class Con_member {
         ser_member.signIn(request);
 
         // model에 id 담아서 redirect로 data_list 이동해야함
-
-        return "redirect:/data/data_list";
+        System.out.println("data_list로 갑니다");
+        return "redirect:/data/list";
 
     }
 

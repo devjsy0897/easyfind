@@ -19,16 +19,21 @@ import javax.persistence.Table;
 public class En_save {
 
     @Id
-    private int idx;
-    private String userID;
+    @Column(name = "data_number")
+    private int dataNum;
 
     @Column(name = "data_name")
     private String dataName;
 
-    private String location;
+    private String userID;
 
-    @Column(name = "reg_date")
-    private String regDate;
+    private String location1;
+    private String location2;
+    private String location3;
 
+    @Column(name = "in_date")
+    private String inDate;
 
+    @Column(name = "out_date")
+    private String outDate;
 }
