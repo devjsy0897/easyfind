@@ -18,8 +18,8 @@ public class En_member {
 
     @Id
     private int idx;
-    private String id;
-    private String password;
+    private String userId;
+    private String userPw;
     private String name;
     private String level;
 

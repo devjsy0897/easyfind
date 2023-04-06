@@ -28,8 +28,15 @@ public class Con_data {
         return "/data/data_list";
     }
 
-    @GetMapping("/barcode")
-    public String saveBarcode(){
+    @GetMapping("/barcode_in")
+    public String barcode_in(Model model){
+        model.addAttribute("type","in");
+        return "/data/data_barcode_quagga";
+    }
+
+    @GetMapping("/barcode_out")
+    public String barcode_out(Model model){
+        model.addAttribute("type", "out");
         return "/data/data_barcode_quagga";
     }
 

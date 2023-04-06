@@ -5,10 +5,8 @@ import com.devjsy.easyfind.repository.Re_member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,20 +20,40 @@ public class Ser_member {
         return list;
     }
 
-    public void signIn(HttpServletRequest request){
+    public Boolean signIn(HttpServletRequest request){
+        boolean result = false;
         String id = request.getParameter("id");
         String pw = request.getParameter("password");
         System.out.println("signIn에서 ID : "+id+" / pw:"+pw);
 
+        System.out.println("userid 찾기:"+re_member.findByUserId(id));
+        En_member user = re_member.findByUserId(id);
+        if (user != null) {
+            System.out.println("user:::"+user);
+            if(user.getUserPw().equals(pw)){
+                System.out.println("로그인 성공");
+                result = true;
+            }
+            else {
+                System.out.println("wrong pw");
+            }
+        }else{
+            System.out.println("wrong id");
+            return false;
+        }
+
+        return result;
         // 로그인 로직 개발필요
 
     }
 
     public List<En_member> insertNewMember() {
+        System.out.println("insertNewMember 입장");
         En_member en_member = new En_member();
         List<En_member> list = re_member.findAll(Sort.by(Sort.Direction.DESC, "idx"));
+
         int idx = 1;
-        if(list!=null){
+        if(list.size()!=0){
             idx = list.get(0).getIdx();
             idx++;
         }
@@ -45,8 +63,8 @@ public class Ser_member {
             pw += ((int)((Math.random() * 10000) % 10))+"";
         }
 
-        en_member.setId("test"+idx);
-        en_member.setPassword(pw);
+        en_member.setUserId("test"+idx);
+        en_member.setUserPw(pw);
         en_member.setName("test"+idx);
         en_member.setLevel("1");
 

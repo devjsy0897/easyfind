@@ -34,22 +34,25 @@ public class Con_member {
     @PostMapping("/signIn")
     public String signIn(HttpServletRequest request){
 
-        ser_member.signIn(request);
+        Boolean signInResult = ser_member.signIn(request);
 
         // model에 id 담아서 redirect로 data_list 이동해야함
-        System.out.println("data_list로 갑니다");
-        return "redirect:/data/list";
-
+        if(signInResult==true) {
+            return "redirect:/data/list";
+        }
+        else{
+            return "/member/member_signIn";
+        }
     }
 
 
     @GetMapping("/signUp")
     public String memberSignUp(Model model){
-
+        System.out.println("signup 입장");
         List<En_member> list = ser_member.insertNewMember();
 
-        model.addAttribute("newID",list.get(0).getId());
-        model.addAttribute("newPW",list.get(0).getPassword());
+        model.addAttribute("newID",list.get(0).getUserId());
+        model.addAttribute("newPW",list.get(0).getUserPw());
 
         return "/member/member_signIn";
     }
