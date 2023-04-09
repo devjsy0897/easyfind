@@ -32,10 +32,10 @@ public class Con_member {
     }
 
     @PostMapping("/signIn")
-    public String signIn(HttpServletRequest request){
+    public String signIn(HttpServletRequest request, Model model){
 
-        Boolean signInResult = ser_member.signIn(request);
-
+        Boolean signInResult = ser_member.signIn(request, model);
+        System.out.println("signInResult:"+signInResult);
         // model에 id 담아서 redirect로 data_list 이동해야함
         if(signInResult==true) {
             return "redirect:/data/list";

@@ -7,7 +7,8 @@
 
 <!-- navbar 위치 -->
 <div th:include="~{/common/navbar}"></div>
-
+<div th:text="${session.userSession[0].getUserId()}"></div>
+<div th:text="${list[0].getDataNum()}"></div>
 <section>
     <th:block th:each="save : ${list}">
         <div th:text="${save.getDataNum()}"></div>

@@ -5,8 +5,11 @@ import com.devjsy.easyfind.repository.Re_member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,30 +23,40 @@ public class Ser_member {
         return list;
     }
 
-    public Boolean signIn(HttpServletRequest request){
+    public Boolean signIn(HttpServletRequest request, Model model){
         boolean result = false;
         String id = request.getParameter("id");
         String pw = request.getParameter("password");
-        System.out.println("signIn에서 ID : "+id+" / pw:"+pw);
 
-        System.out.println("userid 찾기:"+re_member.findByUserId(id));
-        En_member user = re_member.findByUserId(id);
-        if (user != null) {
-            System.out.println("user:::"+user);
-            if(user.getUserPw().equals(pw)){
-                System.out.println("로그인 성공");
-                result = true;
-            }
-            else {
-                System.out.println("wrong pw");
-            }
-        }else{
-            System.out.println("wrong id");
+
+        List<En_member> user = re_member.findByUserId(id);
+
+        for(En_member l : user){
+            System.out.println("l:"+l.getUserId());
+        }
+
+        if(user.size() == 0){
             return false;
         }
 
+        if(user.get(0).getUserPw().equals(pw)){
+            result = true;
+        }
+
+
+        if(result == true){
+            // 여기 로그인 세션 등록
+            HttpSession session = request.getSession();
+            session.setAttribute("userSession", user);
+
+            session = request.getSession();
+            List<En_member> userSession = (List<En_member>)session.getAttribute("userSession");
+
+            for(En_member u : userSession){
+                System.out.println("gd:"+u.getUserId());
+            }
+        }
         return result;
-        // 로그인 로직 개발필요
 
     }
 
