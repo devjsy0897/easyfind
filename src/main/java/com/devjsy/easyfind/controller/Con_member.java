@@ -38,6 +38,7 @@ public class Con_member {
         System.out.println("signInResult:"+signInResult);
         // model에 id 담아서 redirect로 data_list 이동해야함
         if(signInResult==true) {
+            System.out.println("여기서 get이나 post고르는게 없는데?");
             return "redirect:/data/list";
         }
         else{

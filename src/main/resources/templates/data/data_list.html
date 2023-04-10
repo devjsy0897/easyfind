@@ -5,21 +5,34 @@
 </head>
 <body class="bg-light">
 
+<!-- 로그인 세션 만료 시 로그인 화면으로 이동 -->
+<div th:if="${session.userSession == null}">
+    <script type="text/javascript">
+        location.href="/member/signIn";
+    </script>
+</div>
+
 <!-- navbar 위치 -->
 <div th:include="~{/common/navbar}"></div>
-<div th:text="${session.userSession[0].getUserId()}"></div>
-<div th:text="${list[0].getDataNum()}"></div>
+
+
 <section>
-    <th:block th:each="save : ${list}">
-        <div th:text="${save.getDataNum()}"></div>
-        <div th:text="${save.getDataName()}"></div>
-        <div th:text="${save.getUserID()}"></div>
-        <div th:text="${save.getLocation1()}"></div>
-        <div th:text="${save.getLocation2()}"></div>
-        <div th:text="${save.getLocation3()}"></div>
-        <div th:text="${save.getInDate()}"></div>
-        <div th:text="${save.getOutDate()}"></div>
-    </th:block>
+
+    <table class="table table-striped ">
+        <th:block th:each="save : ${list}">
+            <tr>
+                <td th:text="${save.getDataNum()}"></td>
+                <td th:text="${save.getDataName()}"></td>
+                <td th:text="${save.getUserID()}"></td>
+                <td th:text="${save.getLocation1()}"></td>
+                <td th:text="${save.getLocation2()}"></td>
+                <td th:text="${save.getLocation3()}"></td>
+                <td th:text="${save.getInDate()}"></td>
+                <td th:text="${save.getOutDate()}"></td>
+            </tr>
+        </th:block>
+    </table>
+
 </section>
 
 
