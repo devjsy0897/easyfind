@@ -16,14 +16,23 @@
 <div th:include="~{/common/navbar}"></div>
 
 
-<section>
+<section style="width:1000px; margin:0 auto; margin-top:30px; ">
 
-    <table class="table table-striped ">
+    <div style="border: 5px solid #E8ECF0; border-radius:10px; padding:10px;">
+    <table class="table table-striped text-center">
+
+        <tr>
+            <th>바코드</th>
+            <th>물건 이름</th>
+            <th colspan="3">위치</th>
+            <th>저장 날짜</th>
+            <th>반출 날짜</th>
+        </tr>
+
         <th:block th:each="save : ${list}">
             <tr>
                 <td th:text="${save.getDataNum()}"></td>
                 <td th:text="${save.getDataName()}"></td>
-                <td th:text="${save.getUserID()}"></td>
                 <td th:text="${save.getLocation1()}"></td>
                 <td th:text="${save.getLocation2()}"></td>
                 <td th:text="${save.getLocation3()}"></td>
@@ -32,6 +41,7 @@
             </tr>
         </th:block>
     </table>
+    </div>
 
 </section>
 

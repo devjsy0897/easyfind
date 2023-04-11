@@ -35,10 +35,9 @@ public class Con_member {
     public String signIn(HttpServletRequest request, Model model){
 
         Boolean signInResult = ser_member.signIn(request, model);
-        System.out.println("signInResult:"+signInResult);
+
         // model에 id 담아서 redirect로 data_list 이동해야함
         if(signInResult==true) {
-            System.out.println("여기서 get이나 post고르는게 없는데?");
             return "redirect:/data/list";
         }
         else{
@@ -57,5 +56,13 @@ public class Con_member {
 
         return "/member/member_signIn";
     }
+
+    @GetMapping("/signOut")
+    public String memberSignOut(HttpServletRequest request){
+        ser_member.signOut(request);
+
+        return "redirect:/member/signIn";
+    }
+
 
 }

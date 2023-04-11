@@ -4,6 +4,7 @@ import com.devjsy.easyfind.entity.En_member;
 import com.devjsy.easyfind.repository.Re_member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -23,6 +24,8 @@ public class Ser_member {
         return list;
     }
 
+    /**
+     * 로그인 체크 */
     public Boolean signIn(HttpServletRequest request, Model model){
         boolean result = false;
         String id = request.getParameter("id");
@@ -46,15 +49,14 @@ public class Ser_member {
 
         if(result == true){
             // 여기 로그인 세션 등록
+            user.get(0).setUserPw("");
+            System.out.println("del pw : "+user.get(0).getUserPw());
             HttpSession session = request.getSession();
             session.setAttribute("userSession", user);
 
             session = request.getSession();
             List<En_member> userSession = (List<En_member>)session.getAttribute("userSession");
 
-            for(En_member u : userSession){
-                System.out.println("gd:"+u.getUserId());
-            }
         }
         return result;
 
@@ -86,5 +88,10 @@ public class Ser_member {
         list = re_member.findAll(Sort.by(Sort.Direction.DESC, "idx"));
 
         return list;
+    }
+
+    public void signOut(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
     }
 }
