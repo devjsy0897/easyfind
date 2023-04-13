@@ -25,7 +25,7 @@ public class En_save {
     @Column(name = "data_name")
     private String dataName;
 
-    private String userID;
+    private String userId;
 
     private String location1;
     private String location2;

@@ -28,7 +28,8 @@ public class Con_data {
         List<En_member> userSession =  (List)session.getAttribute("userSession");
 
         // 지금은 test 한다고 전체를 가져오는건데 나중에는 id만 get 해서 selectbyId 해서 해당 id에 관한 정보만 빼내야 한다.
-        List<En_save> list = ser_data.selectAll();
+
+        List<En_save> list = ser_data.dataList(userSession);
         model.addAttribute("list", list);
         return "/data/data_list";
     }

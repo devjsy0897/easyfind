@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -17,8 +18,9 @@ public class Ser_data {
     @Autowired
     Re_save re_save;
 
-    public List<En_save> selectAll(){
-        List<En_save> list = re_save.findAll();
+    public List<En_save> dataList(List<En_member> userSession){
+
+        List<En_save> list = re_save.findByUserId(userSession.get(0).getUserId());
         return list;
     }
 

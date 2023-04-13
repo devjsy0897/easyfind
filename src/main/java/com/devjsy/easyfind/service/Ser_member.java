@@ -69,7 +69,9 @@ public class Ser_member {
 
         int idx = 1;
         if(list.size()!=0){
+
             idx = list.get(0).getIdx();
+            System.out.println("값 있는거 확인 idx:"+idx);
             idx++;
         }
 
@@ -78,6 +80,7 @@ public class Ser_member {
             pw += ((int)((Math.random() * 10000) % 10))+"";
         }
 
+        en_member.setIdx(idx);
         en_member.setUserId("test"+idx);
         en_member.setUserPw(pw);
         en_member.setName("test"+idx);
