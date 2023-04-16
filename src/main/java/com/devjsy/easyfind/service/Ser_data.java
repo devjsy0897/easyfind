@@ -18,11 +18,20 @@ public class Ser_data {
     @Autowired
     Re_save re_save;
 
-    public List<En_save> dataList(List<En_member> userSession){
+    public List<En_save> findByUserId(List<En_member> userSession){
 
         List<En_save> list = re_save.findByUserId(userSession.get(0).getUserId());
         return list;
     }
+
+    public List<En_save> findAllOrderByIn_dateDesc(){
+
+        /*List<En_save> list = re_save.findAllOrderByIn_dateDesc("in_date");*/
+        List<En_save> list = re_save.findAll();
+        return list;
+    }
+
+
 
 
 

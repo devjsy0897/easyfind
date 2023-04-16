@@ -10,4 +10,7 @@ import java.util.List;
 @Repository
 public interface Re_save extends JpaRepository<En_save, Integer> {
     List<En_save> findByUserId(String id);
+
+    /*List<En_save> findAllOrderByIn_dateDesc(String in_date);*/
+    List<En_save> findAll();
 }

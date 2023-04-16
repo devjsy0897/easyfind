@@ -33,7 +33,7 @@ public class Con_member {
 
     @PostMapping("/signIn")
     public String signIn(HttpServletRequest request, Model model){
-
+        System.out.println("로그인 체크 화면입니다.");
         Boolean signInResult = ser_member.signIn(request, model);
 
         // model에 id 담아서 redirect로 data_list 이동해야함
